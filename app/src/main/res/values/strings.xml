@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AbsBreathing</string>
+    <string name="admob_id">ca-app-pub-4623298212622664/3911393437</string>
+    <string name="step1_button">Tap When finished exhale</string>
+    <string name="step2_button">Tap When finished inhale</string>
+    <string name="exit_button">Exit</string>
+    <string name="step1_msg">Please exhaling slowly</string>
+    <string name="step2_msg">Please inhale through your nose\n(To around 80%)</string>
+    <string name="step3_msg">seconds,\nPlease hold your breath</string>
+    <string name="step4_msg">seconds,\nPlease exhale through your mouth</string>
+    <string name="step5_msg">seconds,\nPlease inhale through your nose</string>
+    <string name="end_msg">Was cheers for good work.</string>
+    <string name="end_msg2">I will end after 3 seconds.</string>
+
+</resources>

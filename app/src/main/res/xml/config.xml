@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com._4jiokisoft.breathing" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <name>Belly Breathing</name>
+    <description>
+        Supports abdominal breathing. Let's relax in the breath of 10 times.
+    </description>
+    <author email="mrp1q7z@gmail.com" href="http://4jiokisoft.web.fc2.com/">
+        4jiokiSoft
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>

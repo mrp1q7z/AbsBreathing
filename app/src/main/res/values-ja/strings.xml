@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">腹式呼吸</string>
+    <string name="admob_id">ca-app-pub-4623298212622664/3911393437</string>
+    <string name="step1_button">吐き終わったらタップ</string>
+    <string name="step2_button">吸い終わったらタップ</string>
+    <string name="exit_button">終了</string>
+    <string name="step1_msg">ゆっくり息を吐いてください</string>
+    <string name="step2_msg">鼻から息を吸ってください\n（８割まで）</string>
+    <string name="step3_msg">秒間、\n息を止めてください</string>
+    <string name="step4_msg">秒間、\n口から息を吐いてください</string>
+    <string name="step5_msg">秒間、\n鼻から息を吸ってください</string>
+    <string name="end_msg">お疲れ様でした</string>
+    <string name="end_msg2">３秒後に終了します</string>
+
+</resources>
