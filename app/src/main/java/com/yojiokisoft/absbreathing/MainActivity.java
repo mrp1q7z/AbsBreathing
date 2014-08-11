@@ -1,6 +1,7 @@
 package com.yojiokisoft.absbreathing;
 
 import android.os.Handler;
+import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
     private Timer mTimer = null;
     private int mBreatheCount;
     private boolean mActiveFlag;
+    private Vibrator mVibrator = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         AdRequest adRequest = AdCatalogUtils.createAdRequest();
         adViewBanner = (AdView) findViewById(R.id.adViewBanner);
@@ -265,6 +268,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
 
         mTimer = new Timer(true);
         mTimer.schedule(new Step3TimerTask(), mInhaleTime * 2);
+        mVibrator.vibrate(300);
     }
 
     public void exitButtonClicked(View view) {
@@ -308,6 +312,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                         mTimer.schedule(new Step4TimerTask(), mInhaleTime * 2);
                     }
                 });
+                mVibrator.vibrate(300);
             }
         }
     }
@@ -334,6 +339,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                     mTimer.schedule(new Step2TimerTask(), mInhaleTime);
                 }
             });
+            mVibrator.vibrate(150);
         }
     }
 
