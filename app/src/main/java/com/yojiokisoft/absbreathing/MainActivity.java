@@ -1,5 +1,6 @@
 package com.yojiokisoft.absbreathing;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
     private int mBreatheCount;
     private boolean mActiveFlag;
     private Vibrator mVibrator = null;
+    private SettingDao mSettingDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                     .commit();
         }
         mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        mSettingDao = SettingDao.getInstance(this);
 
         AdRequest adRequest = AdCatalogUtils.createAdRequest();
         adViewBanner = (AdView) findViewById(R.id.adViewBanner);
@@ -86,6 +89,7 @@ public class MainActivity extends ActionBarActivity implements AdListener {
         if (adViewBanner != null) {
             adViewBanner.destroy();
         }
+        mVibrator.cancel();
         super.onDestroy();
     }
 
@@ -112,6 +116,9 @@ public class MainActivity extends ActionBarActivity implements AdListener {
         if (id == R.id.action_exit) {
             finish();
             return true;
+        } else if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -268,7 +275,9 @@ public class MainActivity extends ActionBarActivity implements AdListener {
 
         mTimer = new Timer(true);
         mTimer.schedule(new Step3TimerTask(), mInhaleTime * 2);
-        mVibrator.vibrate(300);
+        if (mSettingDao.getVibrate()) {
+            mVibrator.vibrate(300);
+        }
     }
 
     public void exitButtonClicked(View view) {
@@ -282,7 +291,8 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                 return;
             }
             mBreatheCount++;
-            if (mBreatheCount >= 10) {
+            int maxBreathing = Integer.valueOf(mSettingDao.getBreathingCount());
+            if (mBreatheCount >= maxBreathing) {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -295,6 +305,10 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                         mTimer.schedule(new ExitTimerTask(), 3000);
                     }
                 });
+                if (mSettingDao.getVibrate()) {
+                    long pattern[] = {0, 300, 500, 300, 500, 300};
+                    mVibrator.vibrate(pattern, -1);
+                }
             } else {
                 mHandler.post(new Runnable() {
                     @Override
@@ -312,7 +326,9 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                         mTimer.schedule(new Step4TimerTask(), mInhaleTime * 2);
                     }
                 });
-                mVibrator.vibrate(300);
+                if (mSettingDao.getVibrate()) {
+                    mVibrator.vibrate(300);
+                }
             }
         }
     }
@@ -339,7 +355,9 @@ public class MainActivity extends ActionBarActivity implements AdListener {
                     mTimer.schedule(new Step2TimerTask(), mInhaleTime);
                 }
             });
-            mVibrator.vibrate(150);
+            if (mSettingDao.getVibrate()) {
+                mVibrator.vibrate(150);
+            }
         }
     }
 

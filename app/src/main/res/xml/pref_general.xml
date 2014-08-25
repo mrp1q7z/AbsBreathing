@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="vibrate"
+        android:title="@string/pref_title_vibrate"
+        android:summary="@string/pref_description_vibrate"
+        android:defaultValue="true" />
+
+    <ListPreference
+        android:key="breathing_count"
+        android:title="@string/pref_title_breathing_count"
+        android:entries="@array/pref_breathing_count_titles"
+        android:entryValues="@array/pref_breathing_count_values"
+        android:defaultValue="10"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+</PreferenceScreen>

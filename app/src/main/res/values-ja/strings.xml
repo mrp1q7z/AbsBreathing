@@ -13,5 +13,6 @@
     <string name="step5_msg">秒間、\n鼻から息を吸ってください</string>
     <string name="end_msg">お疲れ様でした</string>
     <string name="end_msg2">３秒後に終了します</string>
+    <string name="settings_button">設定</string>
 
 </resources>

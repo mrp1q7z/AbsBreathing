@@ -13,5 +13,6 @@
     <string name="step5_msg">seconds,\nPlease inhale through your nose</string>
     <string name="end_msg">Was cheers for good work.</string>
     <string name="end_msg2">I will end after 3 seconds.</string>
+    <string name="settings_button">Settings</string>
 
 </resources>
